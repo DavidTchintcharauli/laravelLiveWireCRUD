@@ -66,4 +66,25 @@ class Post extends Component
             session()->flash('error','Something goes wrong!');
         }
     }
+    /**
+     * show existing post data in edit post form
+     * @param mixed $id
+     * @return void
+     */
+    public function editPost($id){
+        try{
+            $post = Posts::findOrFail($id);
+            if( !$post) {
+                session()->flash('error', 'Post not found');
+            } else {
+                $this->title = $post->title;
+                $this->description = $post->description;
+                $this->postId = $post->id;
+                $this->updatePost = true;
+                $this->addPost = false;
+            }
+        }catch (\Exception $ex) {
+            session()->flash('error', 'Something is wrong!');
+        }
+    }
 }
