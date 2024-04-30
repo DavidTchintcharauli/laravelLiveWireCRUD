@@ -36,4 +36,15 @@ class Post extends Component
         $this->posts = Posts::select('id', 'title', 'description')->get();
         return view('livewire.post');
     }
+
+    /**
+     * Open add Post form
+     * @return void
+     */
+    public function addPost()
+    {
+        $this->resetFields();
+        $this->addPost = true;
+        $this->updatePost = false;
+    }
 }
