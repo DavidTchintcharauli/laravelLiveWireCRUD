@@ -12,6 +12,13 @@ class Post extends Component
         'deletePostListner'=>'deletePost'
     ];
 
+    protected $rules = [
+        'title' => 'required',
+        'description' => 'required'
+    ];
+
+    
+
     public function render()
     {
         return view('livewire.post');
