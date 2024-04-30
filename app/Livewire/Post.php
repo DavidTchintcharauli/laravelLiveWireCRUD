@@ -118,4 +118,19 @@ class Post extends Component
         $this->updatePost = false;
         $this->resetFields();
     }
+
+    /**
+     * delete specofoc post data from the posts table
+     * @param mixed $id
+     * @return void
+     */
+    public function deletePost($id)
+    {
+        try{
+            Posts::find($id)->delete();
+            session()->flash('success',"Post Deleted Successfully!");
+        }catch(\Exception $e) {
+            session()->flash('error', "Something goes wrong!");
+        }
+    }
 }
