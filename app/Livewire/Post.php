@@ -17,7 +17,14 @@ class Post extends Component
         'description' => 'required'
     ];
 
-    
+    /**
+    * Reseting all inputted fields
+    * @return void
+    */
+    public function resetFields(){
+        $this->title = '';
+        $this->description = '';
+    }
 
     public function render()
     {
