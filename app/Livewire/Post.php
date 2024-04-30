@@ -47,4 +47,23 @@ class Post extends Component
         $this->addPost = true;
         $this->updatePost = false;
     }
+    /**
+     * store the user inputted post data in the posts table
+     * @return void
+     */
+    public function storePost()
+    {
+        $this->validate();
+        try {
+            Posts::create([
+                'title' =>$this->title,
+                'description' => $this->description
+            ]);
+            session()->flash('success','Post Creted Successfully!');
+            $this->resetFields();
+            $this->addPost = false;
+        } catch (\Exception $ex) {
+            session()->flash('error','Something goes wrong!');
+        }
+    }
 }
